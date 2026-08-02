@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karishma Vairagade — Sysadmin, moving to DevOps</title>
+<meta name="description" content="Portfolio and blog of Karishma Vairagade — System Administrator at TCS, documenting the move into DevOps engineering.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">karishma<span>@</span>devops</a>
+      <div class="nav-links">
+        <a href="index.html">home</a>
+        <a href="blog.html">blog</a>
+        <a href="index.html#experience">experience</a>
+        <a href="index.html#contact">contact</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">menu</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="terminal">
+    <div class="terminal-bar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="terminal-title">karishma@workstation: ~</span>
+    </div>
+    <div class="terminal-body">
+      <div class="line"><span class="prompt">$</span> whoami</div>
+      <div class="line out">karishma-vairagade</div>
+      <div class="line"><span class="prompt">$</span> cat role.txt</div>
+      <div class="line out">System Administrator @ Tata Consultancy Services</div>
+      <div class="line out">Currently automating my way into DevOps Engineering</div>
+      <div class="line"><span class="prompt">$</span> ls <span class="path">./skills/</span></div>
+      <div class="line out">docker/  git/  ansible/  terraform/  kubernetes/  aws/  grafana/  opentelemetry/  loki/</div>
+      <div class="line"><span class="prompt">$</span> <span class="cursor"></span></div>
+    </div>
+  </div>
+
+  <p class="tagline">I keep servers running, and I'm teaching myself to automate everything around them. This site is where I write down what I'm learning as I move from sysadmin work to DevOps.</p>
+
+  <section class="section" id="skills">
+    <div class="section-head">
+      <h2>skills</h2>
+      <span class="path">~/skills $ systemctl status --all</span>
+    </div>
+    <div class="status-board">
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">git.service</span><span class="status-state">active (running)</span><span class="status-desc">version control, branching, code review</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">docker.service</span><span class="status-state">active (running)</span><span class="status-desc">containerizing applications</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">kubernetes.service</span><span class="status-state">active (running)</span><span class="status-desc">orchestrating containers at scale</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">terraform.service</span><span class="status-state">active (running)</span><span class="status-desc">infrastructure as code</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">ansible.service</span><span class="status-state">active (running)</span><span class="status-desc">configuration management</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">aws.service</span><span class="status-state">active (running)</span><span class="status-desc">cloud infrastructure</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">grafana.service</span><span class="status-state">active (running)</span><span class="status-desc">dashboards and visualization</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">opentelemetry.service</span><span class="status-state">active (running)</span><span class="status-desc">distributed tracing and metrics</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">loki.service</span><span class="status-state">active (running)</span><span class="status-desc">log aggregation</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="section-head">
+      <h2>experience</h2>
+      <span class="path">~/career $ cat history.log</span>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-role">System Administrator</div>
+        <div class="timeline-meta">Tata Consultancy Services &middot; present</div>
+        <p>Managing servers, user access, patching, and backups, and handling day-to-day infrastructure incidents. Increasingly pulling automation, containers, and infrastructure-as-code into the day job wherever there's room for it.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Self-directed DevOps training</div>
+        <div class="timeline-meta">Ongoing</div>
+        <p>Building hands-on projects with Docker, Kubernetes, Terraform, and Ansible, and setting up observability stacks with Grafana, OpenTelemetry, and Loki to understand systems end to end, not just keep them running.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="latest-posts">
+    <div class="section-head">
+      <h2>latest posts</h2>
+      <span class="path">~/blog $ git log --oneline -3</span>
+    </div>
+    <div class="commit-log">
+
+      <a class="commit" href="posts/why-im-moving-to-devops.html">
+        <div class="commit-row">
+          <span class="commit-hash">a1c9e02</span>
+          <span class="commit-date">on branch: career-change</span>
+        </div>
+        <div class="commit-title">Why I'm moving from sysadmin to DevOps</div>
+        <div class="commit-desc">What actually pushed me to make the switch, and what I'm doing differently in year one.</div>
+      </a>
+
+      <a class="commit" href="posts/docker-for-sysadmins.html">
+        <div class="commit-row">
+          <span class="commit-hash">7f3d81b</span>
+          <span class="commit-date">on branch: containers</span>
+        </div>
+        <div class="commit-title">Docker for sysadmins: the mental model that finally clicked</div>
+        <div class="commit-desc">Why containers confused me at first, and the one reframe that made it click.</div>
+      </a>
+
+      <a class="commit" href="posts/terraform-ansible-iac.html">
+        <div class="commit-row">
+          <span class="commit-hash">4b6a0f5</span>
+          <span class="commit-date">on branch: infra-as-code</span>
+        </div>
+        <div class="commit-title">Terraform + Ansible: infra as code without losing sysadmin instincts</div>
+        <div class="commit-desc">How I split provisioning from configuration, and kept my old troubleshooting habits along the way.</div>
+      </a>
+
+    </div>
+    <a class="commit-link" href="blog.html">view all posts &#8594;</a>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-head">
+      <h2>contact</h2>
+      <span class="path">~ $ cat contact.txt</span>
+    </div>
+    <p class="tagline">Open to DevOps opportunities and always happy to talk shop about infra, automation, or observability.</p>
+    <div class="status-board">
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">email</span><span class="status-desc">your.email@example.com</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">linkedin</span><span class="status-desc">linkedin.com/in/your-profile</span></div>
+      <div class="status-row"><span class="status-dot"></span><span class="status-name">github</span><span class="status-desc">github.com/your-username</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-row">
+    <span>karishma-vairagade &middot; built with plain HTML/CSS</span>
+    <span><a href="blog.html">blog</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

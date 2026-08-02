@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why I'm moving from sysadmin to DevOps — Karishma Vairagade</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="../index.html">karishma<span>@</span>devops</a>
+      <div class="nav-links">
+        <a href="../index.html">home</a>
+        <a href="../blog.html">blog</a>
+        <a href="../index.html#experience">experience</a>
+        <a href="../index.html#contact">contact</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">menu</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="post-meta">
+    <span class="commit-hash">a1c9e02</span><span>on branch: career-change</span>
+    <h1>Why I'm moving from sysadmin to DevOps</h1>
+  </div>
+
+  <article class="post-body">
+    <p>For a while now, my job has been keeping systems alive: patching servers, managing user access, responding when something goes down at 2am, restoring from backups when it does. It's real work, and I've gotten good at it. But somewhere in the last year, the part of the job I actually looked forward to stopped being the troubleshooting and started being the automation I built to avoid the troubleshooting in the first place.</p>
+
+    <p>That's the real reason I'm making this switch. Not because sysadmin work isn't valuable, but because I noticed I was happiest writing a script to handle something so I'd never have to do it manually again. DevOps is basically that instinct, formalized and scaled up.</p>
+
+    <h2>What sysadmin work already taught me</h2>
+    <p>I don't think of this as starting from zero. Years of keeping infrastructure running gave me things a lot of DevOps material assumes you already have:</p>
+    <ul>
+      <li>An instinct for what actually breaks in production, not just what breaks in a tutorial.</li>
+      <li>Comfort with the command line, networking basics, and reading logs under pressure.</li>
+      <li>A healthy respect for backups, rollback plans, and change control, the stuff that doesn't show up in a demo but matters at 3am.</li>
+    </ul>
+    <p>What I'm adding on top of that is the automation-first mindset: infrastructure as code instead of manual configuration, containers instead of hand-tuned servers, and metrics/logs/traces instead of "let me SSH in and take a look."</p>
+
+    <h2>What year one looks like</h2>
+    <p>I'm building this out roughly in this order: containers first (<code>Docker</code>), then orchestration (<code>Kubernetes</code>), then infrastructure as code (<code>Terraform</code> and <code>Ansible</code>), then observability (<code>Grafana</code>, <code>OpenTelemetry</code>, <code>Loki</code>), all on top of <code>AWS</code> as the cloud I'm learning deepest. This blog is where I'm writing down what actually clicks and what doesn't, mostly so future-me has notes, and partly because writing something down is the fastest way I know to find out if I actually understood it.</p>
+
+    <p>If you're a sysadmin thinking about the same move: the skills you already have are not a detour, they're the foundation. You're not starting over, you're specializing.</p>
+  </article>
+
+  <div class="post-nav">
+    <a href="../blog.html">&#8592; back to log</a>
+    <a class="next" href="docker-for-sysadmins.html">next commit &#8594;</a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot-row">
+    <span>karishma-vairagade &middot; built with plain HTML/CSS</span>
+    <span><a href="../index.html">home</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

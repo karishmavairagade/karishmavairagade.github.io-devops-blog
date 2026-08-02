@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0b0f14;
+  --surface: #121820;
+  --surface-2: #1a222c;
+  --border: #232b35;
+  --text: #e8ecf1;
+  --text-dim: #8b96a5;
+  --text-faint: #5b6472;
+  --accent: #d98e3f;
+  --accent-soft: #d98e3f22;
+  --ok: #4fd1ae;
+  --ok-soft: #4fd1ae1c;
+  --max-w: 960px;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, .nav-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+/* ---------- header ---------- */
+header.site {
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(11,15,20,0.92);
+  backdrop-filter: blur(6px);
+}
+.site nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+}
+.logo {
+  font-family: var(--font-mono); font-weight: 700; font-size: 16px; color: var(--text);
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; font-family: var(--font-mono); font-size: 14px; color: var(--text-dim); }
+.nav-links a:hover { color: var(--text); }
+.nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 10px; font-family: var(--font-mono); }
+
+@media (max-width: 640px) {
+  .nav-links {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    flex-direction: column; gap: 0; padding: 8px 24px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-toggle { display: inline-block; }
+}
+
+/* ---------- terminal hero ---------- */
+.terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 48px 0 40px;
+}
+.terminal-bar {
+  display: flex; gap: 7px; align-items: center;
+  padding: 12px 16px; background: var(--surface-2); border-bottom: 1px solid var(--border);
+}
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.r { background: #e2645a; } .dot.y { background: #e0b34d; } .dot.g { background: var(--ok); }
+.terminal-title { margin-left: 10px; font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); }
+.terminal-body { padding: 24px; font-family: var(--font-mono); font-size: 14.5px; }
+.terminal-body .line { margin-bottom: 6px; white-space: pre-wrap; }
+.terminal-body .prompt { color: var(--ok); }
+.terminal-body .comment { color: var(--text-faint); }
+.terminal-body .out { color: var(--text-dim); }
+.terminal-body .path { color: var(--accent); }
+.cursor {
+  display: inline-block; width: 8px; height: 16px; background: var(--accent);
+  vertical-align: text-bottom; animation: blink 1s step-start infinite;
+}
+@media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+.tagline { color: var(--text-dim); font-size: 17px; max-width: 620px; margin-bottom: 8px; }
+
+/* ---------- section headers ---------- */
+.section { margin: 64px 0; }
+.section-head {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px;
+}
+.section-head h2 { font-family: var(--font-mono); font-size: 18px; font-weight: 700; }
+.section-head .path { font-family: var(--font-mono); font-size: 13px; color: var(--text-faint); }
+
+/* ---------- status board (skills) ---------- */
+.status-board {
+  border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  background: var(--surface);
+}
+.status-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 18px; border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 13.5px;
+}
+.status-row:last-child { border-bottom: none; }
+.status-dot {
+  width: 9px; height: 9px; border-radius: 50%; background: var(--ok); flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--ok-soft);
+}
+.status-name { color: var(--text); min-width: 190px; }
+.status-state { color: var(--ok); min-width: 130px; }
+.status-desc { color: var(--text-faint); }
+@media (max-width: 640px) {
+  .status-row { flex-wrap: wrap; }
+  .status-name { min-width: 140px; }
+}
+
+/* ---------- experience timeline ---------- */
+.timeline { border-left: 2px solid var(--border); padding-left: 24px; }
+.timeline-item { position: relative; margin-bottom: 32px; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -30px; top: 4px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent);
+}
+.timeline-role { font-weight: 600; font-size: 16px; }
+.timeline-meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-faint); margin: 3px 0 10px; }
+.timeline-item p { color: var(--text-dim); font-size: 15px; max-width: 640px; }
+
+/* ---------- git log (blog list) ---------- */
+.commit-log { display: flex; flex-direction: column; }
+.commit {
+  display: block; padding: 20px 0; border-bottom: 1px solid var(--border);
+}
+.commit:first-child { padding-top: 0; }
+.commit-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.commit-hash {
+  font-family: var(--font-mono); font-size: 12px; color: var(--bg); background: var(--accent);
+  padding: 2px 7px; border-radius: 4px; font-weight: 700;
+}
+.commit-date { font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); }
+.commit-title { font-size: 17px; font-weight: 600; margin: 4px 0 6px; }
+.commit-desc { color: var(--text-dim); font-size: 14.5px; max-width: 680px; }
+.commit-link { display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 13px; color: var(--accent); }
+.commit-link:hover { text-decoration: underline; }
+a.commit:hover .commit-title { color: var(--accent); }
+
+/* ---------- footer ---------- */
+footer.site {
+  border-top: 1px solid var(--border); margin-top: 80px; padding: 32px 0 48px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--text-faint);
+}
+footer.site .foot-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer.site a:hover { color: var(--accent); }
+
+/* ---------- post page ---------- */
+.post-meta {
+  font-family: var(--font-mono); font-size: 13px; color: var(--text-faint);
+  border: 1px solid var(--border); background: var(--surface);
+  border-radius: 10px; padding: 18px 20px; margin: 40px 0 36px;
+}
+.post-meta .commit-hash { margin-right: 10px; }
+.post-meta h1 { font-family: var(--font-sans); font-size: 26px; color: var(--text); margin-top: 12px; font-weight: 600; }
+.post-body { font-size: 16.5px; color: #d3d9e0; max-width: 720px; }
+.post-body p { margin-bottom: 20px; }
+.post-body h2 { font-size: 21px; font-weight: 600; margin: 36px 0 14px; color: var(--text); }
+.post-body code { font-family: var(--font-mono); background: var(--surface-2); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--accent); }
+.post-body pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; overflow-x: auto; margin: 20px 0; }
+.post-body pre code { background: none; padding: 0; color: var(--text-dim); }
+.post-body ul { margin: 0 0 20px 20px; color: #d3d9e0; }
+.post-body li { margin-bottom: 8px; }
+
+.post-nav { display: flex; justify-content: space-between; gap: 20px; margin: 56px 0; font-family: var(--font-mono); font-size: 13.5px; }
+.post-nav a { color: var(--text-dim); border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; flex: 1; }
+.post-nav a:hover { color: var(--accent); border-color: var(--accent); }
+.post-nav .next { text-align: right; }
+
+h1.page-title { font-family: var(--font-mono); font-size: 22px; margin: 48px 0 6px; }
+.page-sub { color: var(--text-dim); margin-bottom: 32px; font-size: 15px; }

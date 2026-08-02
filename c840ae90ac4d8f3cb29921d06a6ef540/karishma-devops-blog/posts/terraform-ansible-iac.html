@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terraform + Ansible — Karishma Vairagade</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="../index.html">karishma<span>@</span>devops</a>
+      <div class="nav-links">
+        <a href="../index.html">home</a>
+        <a href="../blog.html">blog</a>
+        <a href="../index.html#experience">experience</a>
+        <a href="../index.html#contact">contact</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">menu</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="post-meta">
+    <span class="commit-hash">4b6a0f5</span><span>on branch: infra-as-code</span>
+    <h1>Terraform + Ansible: infra as code without losing sysadmin instincts</h1>
+  </div>
+
+  <article class="post-body">
+    <p>The hardest habit to unlearn as a sysadmin moving into infrastructure as code wasn't a tool, it was clicking around a console or SSHing in to fix something by hand. Every manual fix is a fact about your infrastructure that lives only in your memory until the next person (or the next incident) finds out the hard way. Terraform and Ansible fix that in two different, complementary ways, and untangling which one does what is what finally made both of them click.</p>
+
+    <h2>Two different questions</h2>
+    <p>Terraform answers: what infrastructure should exist? It's declarative, you describe the end state, an EC2 instance, a VPC, a security group, and Terraform figures out how to get there and keeps a state file so it knows what it already created.</p>
+    <p>Ansible answers a different question: once that machine exists, what should be installed and configured on it? It's more procedural, run this playbook, install these packages, template out this config file, restart this service.</p>
+    <p>Trying to make one tool do both jobs was where I kept getting stuck. Splitting them cleanly is what made the workflow feel natural:</p>
+    <pre><code># terraform: provision the box
+resource "aws_instance" "app" {
+  ami           = "ami-xxxxxxxx"
+  instance_type = "t3.micro"
+  tags = { Name = "app-server" }
+}
+
+# ansible: configure the box
+- hosts: app_servers
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present</code></pre>
+
+    <h2>Where my old instincts still matter</h2>
+    <p>Infra as code doesn't replace sysadmin judgment, it just gives it a place to live permanently instead of in my head:</p>
+    <ul>
+      <li>I still think about blast radius before applying anything, the same way I did before running a change on a production server.</li>
+      <li>I still read the plan output line by line before <code>terraform apply</code>, the same way I used to read a change ticket before touching anything.</li>
+      <li>Idempotency, a word Ansible cares about a lot, is just "if I run this twice, nothing bad should happen," which is exactly what I always wanted from my old shell scripts.</li>
+    </ul>
+
+    <p>Next on the list: wiring up Grafana, OpenTelemetry, and Loki so I can actually see what all this provisioned, configured infrastructure is doing once it's running, not just trust that it's fine.</p>
+  </article>
+
+  <div class="post-nav">
+    <a href="docker-for-sysadmins.html">&#8592; previous commit</a>
+    <a class="next" href="../blog.html">back to log &#8594;</a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot-row">
+    <span>karishma-vairagade &middot; built with plain HTML/CSS</span>
+    <span><a href="../index.html">home</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker for sysadmins — Karishma Vairagade</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="../index.html">karishma<span>@</span>devops</a>
+      <div class="nav-links">
+        <a href="../index.html">home</a>
+        <a href="../blog.html">blog</a>
+        <a href="../index.html#experience">experience</a>
+        <a href="../index.html#contact">contact</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">menu</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="post-meta">
+    <span class="commit-hash">7f3d81b</span><span>on branch: containers</span>
+    <h1>Docker for sysadmins: the mental model that finally clicked</h1>
+  </div>
+
+  <article class="post-body">
+    <p>As a sysadmin, my instinct with a new application was always the same: provision a server, install the dependencies, configure it, keep it patched, and hope the next app doesn't need a conflicting version of something I already installed. Docker didn't make sense to me until I stopped thinking of it as "a lighter virtual machine" and started thinking of it as a shipping container for a very specific, very boring reason: it separates <em>the application and everything it needs</em> from <em>the machine it happens to run on</em>.</p>
+
+    <h2>The reframe that helped</h2>
+    <p>A virtual machine virtualizes hardware. A container doesn't, it shares the host's kernel and just isolates the process, the filesystem, and the dependencies around it. That's why containers start in milliseconds instead of minutes, and why an image that runs on my laptop runs identically on a server, because it's not "the same config," it's the literal same filesystem layer.</p>
+    <p>Once that clicked, a lot of my old sysadmin headaches turned into non-issues:</p>
+    <ul>
+      <li>"Works on my machine" mostly disappears, because the machine is now part of what ships.</li>
+      <li>Dependency conflicts between two apps on one server go away, since each container has its own isolated environment.</li>
+      <li>Rolling back a bad deploy becomes "run the previous image tag" instead of "hope the last backup is recent."</li>
+    </ul>
+
+    <h2>What I actually practiced</h2>
+    <p>I started small and treated it like learning any new tool on the job:</p>
+    <pre><code>docker build -t my-app:v1 .
+docker run -d -p 8080:8080 my-app:v1
+docker logs -f my-app
+docker ps</code></pre>
+    <p>That last one, <code>docker ps</code>, is the one that made Docker feel familiar. It's basically <code>systemctl status</code> for containers, and once I saw that parallel, orchestration tools like Kubernetes stopped feeling like a new universe and started feeling like "the thing that runs <code>docker ps</code> across a whole fleet of machines for me."</p>
+
+    <p>Next up: taking that same instinct and applying it to Kubernetes, where the question stops being "how do I run one container" and becomes "how do I keep hundreds of them healthy without babysitting each one."</p>
+  </article>
+
+  <div class="post-nav">
+    <a href="why-im-moving-to-devops.html">&#8592; previous commit</a>
+    <a class="next" href="terraform-ansible-iac.html">next commit &#8594;</a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap foot-row">
+    <span>karishma-vairagade &middot; built with plain HTML/CSS</span>
+    <span><a href="../index.html">home</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
